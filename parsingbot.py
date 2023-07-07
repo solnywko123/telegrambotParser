@@ -20,7 +20,7 @@ def message_send(message):
             markup.add(*buttons)
             bot.send_message(message.chat.id, f"{i}.{result}", reply_markup=markup)
         bot.register_next_step_handler(message,reply_to_button)
-       
+    
         
             
 
@@ -47,23 +47,7 @@ def message_send_second(message):
     if message.text == 'Quit':
         bot.send_message(message.chat.id, "До свидания")
         
-        
     
-    
-    
-    
-        
-    
-        
-    
-     
-
-        
-        
-        
-        
-        
-        
 # -----------------------------------------------------------ПАРСЕР------------------------------------------------------------------------------------------
 def html_get(URL):
     r = requests.get(URL).text
@@ -78,7 +62,7 @@ def parser(html):
     
     news_table = soup.find('div',class_ = 'Tag--articles').find_all('div', class_ = 'Tag--article')
 
-    key = 1
+    key = 0
      
     for list in news_table[:21]:
         
@@ -87,7 +71,7 @@ def parser(html):
         link = list.find('img').get('src')
         
         image = list.find('a',class_ = 'ArticleItem--image').get('href')
-# запись в словарь 
+# запись в словарь  
         data_book[key] = {
             
             'title' : title, 
